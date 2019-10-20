@@ -65,7 +65,7 @@ The following assumes you configured a reverse proxy, if you did not simply foll
             path: '/' // change this if you are serving from something like `example.com/gekko`
         },
         adapter: 'sqlite'
-    }
+    };
     
     if(typeof window === 'undefined')
         module.exports = CONFIG;
