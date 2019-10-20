@@ -24,6 +24,7 @@ Edit the uiconfig file like so:
         api: {
             host: '0.0.0.0',
             port: 3000,
+            timeout: 120000 // 2 minutes
         },
         ui: {
             ssl: false,
@@ -33,7 +34,12 @@ Edit the uiconfig file like so:
         },
         adapter: 'sqlite'
 
-    }
+    };
+    
+    if(typeof window === 'undefined')
+        module.exports = CONFIG;
+    else
+        window.CONFIG = CONFIG;
 
 You can now access the Gekko UI by going to `http://x.x.x.x:3000` in a browser (change `x.x.x.x` with the IP of the machine that will run Gekko).
 
@@ -50,6 +56,7 @@ The following assumes you configured a reverse proxy, if you did not simply foll
         api: {
             host: '127.0.0.1',
             port: 3000,
+            timeout: 120000 // 2 minutes
         },
         ui: {
             ssl: true,
@@ -59,6 +66,11 @@ The following assumes you configured a reverse proxy, if you did not simply foll
         },
         adapter: 'sqlite'
     }
+    
+    if(typeof window === 'undefined')
+        module.exports = CONFIG;
+    else
+        window.CONFIG = CONFIG;
 
 
 ## Configuring NGINX as a reverse proxy
